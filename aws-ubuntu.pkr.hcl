@@ -8,6 +8,7 @@ packer {
 }
 
 source "amazon-ebs" "ubuntu" {
+  profile = "easytrain"
   ami_name      = "aws-ubuntu-easytrain"
   instance_type = "t2.micro"
   region        = "eu-central-1"
@@ -62,6 +63,24 @@ build {
       "cd /home/ubuntu/app/customer-relationship-management",
       "./mvnw clean package"
     ]
+  }
+
+  provisioner "file" {
+    source      = "easytrain.service"
+    destination = "/home/ubuntu/"
+  }
+
+  provisioner "shell" {
+    inline = [
+      "echo Moving easytrain.service to /etc/systemd/system",
+      "sudo mv /home/ubuntu/easytrain.service /etc/systemd/system/"
+    ]
+  }
+
+  provisioner "shell" {
+    inline = [
+      "echo Enable easytrain.service...",
+    "sudo systemctl enable easytrain.service"]
   }
 
 }
