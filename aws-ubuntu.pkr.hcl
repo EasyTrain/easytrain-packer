@@ -25,3 +25,19 @@ source "amazon-ebs" "ubuntu" {
 
   ssh_username = "ubuntu"
 }
+
+build {
+  name = "ubuntu:noble"
+  sources = [
+    "source.amazon-ebs.ubuntu-noble"
+  ]
+
+  provisioner "shell" {
+    inline = [
+      "sleep 10",
+      "sudo apt update -y",
+      "echo installing OpenJDK",
+      "sudo apt install openjdk-21-jre -y",
+    ]
+  }
+}
