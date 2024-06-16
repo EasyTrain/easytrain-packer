@@ -20,7 +20,7 @@ source "amazon-ebs" "ubuntu" {
     }
 
     most_recent = true
-    owners      = ["622229127833"]
+    owners      = ["099720109477"]
   }
 
   ssh_username = "ubuntu"
@@ -43,6 +43,25 @@ build {
 
     provisioner "shell" {
     script = "postgres-setup.sh"
+  }
+
+  provisioner "shell" {
+    inline = [
+      "mkdir /home/ubuntu/app"
+    ]
+  }
+
+  provisioner "file" {
+    source      = "/home/jacques-navarro/Documents/easytrain/application"
+    destination = "/home/ubuntu/app"
+  }
+
+  provisioner "shell" {
+    inline = [
+      "echo Packaging Java application...",
+      "cd /home/ubuntu/app/customer-relationship-management",
+      "./mvnw clean package"
+    ]
   }
 
 }
