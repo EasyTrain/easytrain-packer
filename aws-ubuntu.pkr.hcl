@@ -40,4 +40,9 @@ build {
       "sudo apt install openjdk-21-jre -y",
     ]
   }
+
+    provisioner "shell" {
+    script = "postgres-setup.sh"
+  }
+
 }
