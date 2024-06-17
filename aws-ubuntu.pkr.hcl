@@ -7,8 +7,8 @@ packer {
   }
 }
 
-source "amazon-ebs" "ubuntu" {
-  profile = "easytrain"
+source "amazon-ebs" "easytrain-ubuntu" {
+  profile       = "easytrain"
   ami_name      = "aws-ubuntu-easytrain"
   instance_type = "t2.micro"
   region        = "eu-central-1"
@@ -30,7 +30,7 @@ source "amazon-ebs" "ubuntu" {
 build {
   name = "ubuntu:noble"
   sources = [
-    "source.amazon-ebs.ubuntu-noble"
+    "source.amazon-ebs.easytrain-ubuntu"
   ]
 
   provisioner "shell" {
@@ -42,7 +42,7 @@ build {
     ]
   }
 
-    provisioner "shell" {
+  provisioner "shell" {
     script = "postgres-setup.sh"
   }
 
