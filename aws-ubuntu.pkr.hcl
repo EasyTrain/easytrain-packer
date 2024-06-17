@@ -73,6 +73,8 @@ build {
   provisioner "shell" {
     inline = [
       "echo Moving easytrain.service to /etc/systemd/system",
+      "sudo chmod +x easytrain.service",
+      "sudo chown root:root easytrain.service",
       "sudo mv /home/ubuntu/easytrain.service /etc/systemd/system/"
     ]
   }
@@ -80,7 +82,10 @@ build {
   provisioner "shell" {
     inline = [
       "echo Enable easytrain.service...",
-    "sudo systemctl enable easytrain.service"]
+      "sudo systemctl enable easytrain.service",
+      "sudo systemctl start easytrain.service"
+    ]
   }
 
 }
+
