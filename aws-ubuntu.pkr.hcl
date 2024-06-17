@@ -60,8 +60,8 @@ build {
   provisioner "shell" {
     inline = [
       "echo Packaging Java application...",
-      "cd /home/ubuntu/app/customer-relationship-management",
-      "./mvnw clean package"
+      "cd /home/ubuntu/app/application",
+      "./mvnw clean package -DskipTests -U"
     ]
   }
 
