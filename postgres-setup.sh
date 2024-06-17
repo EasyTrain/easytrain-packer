@@ -184,4 +184,4 @@ sudo -u postgres psql -U postgres -d easytrain -c "CREATE TABLE SPRING_SESSION_A
 
 # change postgres superuser password
 # spring boot needs password to connect to database
-sudo -u postgres psql -U postgres -c "ALTER USER postgres PASSWORD 'password';"
+sudo -u postgres psql -U postgres -c "ALTER USER postgres PASSWORD 'postgres';"
