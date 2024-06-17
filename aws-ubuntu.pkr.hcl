@@ -38,7 +38,7 @@ build {
       "sleep 10",
       "sudo apt update -y",
       "echo installing OpenJDK",
-      "sudo apt install openjdk-21-jre -y",
+      "sudo apt install openjdk-21-jdk -y",
     ]
   }
 
