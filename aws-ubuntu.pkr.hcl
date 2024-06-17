@@ -87,5 +87,39 @@ build {
     ]
   }
 
-}
+  provisioner "file" {
+    source      = "/home/jacques-navarro/Documents/easytrain/api-payments"
+    destination = "/home/ubuntu/app"
+  }
 
+  provisioner "shell" {
+    inline = [
+      "echo Packaging API-Payments application...",
+      "cd /home/ubuntu/app/api-payments",
+      "./mvnw clean package -DskipTest -U"
+    ]
+  }
+
+  provisioner "file" {
+    source      = "api-payments.service"
+    destination = "/home/ubuntu/"
+  }
+
+  provisioner "shell" {
+    inline = [
+      "echo Moving api-payments.service to /etc/systemd/system",
+      "sudo chmod +x api-payments.service",
+      "sudo chown root:root api-payments.service",
+      "sudo mv /home/ubuntu/api-payments.service /etc/systemd/system/"
+    ]
+  }
+
+  provisioner "shell" {
+    inline = [
+      "echo Enable api-payments.service...",
+      "sudo systemctl enable api-payments.service",
+      "sudo systemctl start api-payments.service"
+    ]
+  }
+
+}

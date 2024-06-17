@@ -1,0 +1,9 @@
+[Unit]
+Description=API-Payments Application
+
+[Service]
+ExecStart= /usr/bin/java -jar /home/jacques-navarro/Documents/easytrain/api-payments/target/train-payments-0.0.1-SNAPSHOT.jar
+SuccessExitStatus=143
+
+[Install]
+WantedBy=multi-user.target
