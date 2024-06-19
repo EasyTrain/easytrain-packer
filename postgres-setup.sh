@@ -5,6 +5,10 @@ sudo apt-get -y install postgresql
 sudo update-rc.d postgresql enable
 sudo service postgresql start
 
+# allow remote access to server, required for pg admin
+sudo sed -i '60s/localhost/*/' /etc/postgresql/16/main/postgresql.conf
+sudo echo "host all all 0.0.0.0/0 md5" >> /etc/postgresql/16/main/pg_hba.conf
+
 # create easytrain database
 sudo -u postgres psql -U postgres -c "CREATE DATABASE easytrain;"
 
