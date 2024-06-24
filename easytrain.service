@@ -1,8 +1,8 @@
 [Unit]
-Description=EasyTrain Application
+Description=EasyTrain Application runing on port 8080 profile=prod
 
 [Service]
-ExecStart= /usr/bin/java -jar /home/ubuntu/app/application/target/application-0.0.1-SNAPSHOT.jar
+ExecStart= /usr/bin/java -jar /home/ubuntu/app/application/target/application-0.0.1-SNAPSHOT.jar --spring.profiles.active=prod
 SuccessExitStatus=143
 
 [Install]
