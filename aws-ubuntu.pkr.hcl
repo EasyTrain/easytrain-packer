@@ -9,7 +9,7 @@ packer {
 
 source "amazon-ebs" "easytrain-ubuntu" {
   profile       = "easytrain"
-  ami_name      = "aws-ubuntu-easytrain"
+  ami_name      = "aws-ubuntu-easytrain-0.3.0"
   instance_type = "t2.micro"
   region        = "eu-central-1"
 
@@ -68,6 +68,13 @@ build {
   provisioner "file" {
     source      = "/home/jacques-navarro/Documents/easytrain/application"
     destination = "/home/ubuntu/app"
+  }
+
+  provisioner "shell" {
+    inline = [
+      # edit logout path in inline JS that logs the user out after changing their password
+      "sudo sed -i 's#/easytrain/logout#/logout#' /home/ubuntu/app/application/src/main/resources/templates/change_password/password_change_success.html"
+    ]
   }
 
   provisioner "shell" {
