@@ -47,8 +47,21 @@ build {
   }
 
   provisioner "shell" {
+    script = "insert-stations.sh"
+  }
+
+  provisioner "file" {
+    source      = "pg_hba.conf"
+    destination = "/home/ubuntu/"
+  }
+
+  provisioner "shell" {
     inline = [
-      "mkdir /home/ubuntu/app"
+      "mkdir -p /home/ubuntu/app",
+      # allow remote access to server, required for pg admin
+      "sudo sed -i '60s/localhost/*/' /etc/postgresql/16/main/postgresql.conf",
+      "sudo chown postgres:postgres pg_hba.conf",
+      "sudo cp /home/ubuntu/pg_hba.conf /etc/postgresql/16/main/pg_hba.conf"
     ]
   }
 
