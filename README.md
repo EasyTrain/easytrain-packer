@@ -40,3 +40,7 @@ An Ubuntu base AMI for your specific region
 ├── postgres-setup.sh
 └── README.md
 ```
+
+## License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
