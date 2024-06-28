@@ -21,3 +21,9 @@ Packer uses the Ubuntu Server 24.04 LTS AMI in the eu-central-1 region as the ba
 - Enable the appplication to run as a Systemd service on startup
 
 ## Dependencies
+
+Packer version 1.2.8 or higher  
+AWS Account  
+AWS CLI 1.15.58  
+A valid AWS Access Key ID and Secret Access Key configured with the AWS CLI  
+An Ubuntu base AMI for your specific region
