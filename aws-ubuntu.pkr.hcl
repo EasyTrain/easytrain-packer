@@ -9,7 +9,7 @@ packer {
 
 source "amazon-ebs" "easytrain-ubuntu" {
   profile       = "easytrain"
-  ami_name      = "aws-ubuntu-easytrain-0.3.0"
+  ami_name      = "aws-ubuntu-easytrain-0.4.0"
   instance_type = "t2.micro"
   region        = "eu-central-1"
 
