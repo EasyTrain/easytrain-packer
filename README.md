@@ -1,3 +1,5 @@
+![](images/easytrain-packer.png)
+
 # EasyTrain-Packer
 
 This Packer template builds an Amazon Machine Image (AMI) that is used to
