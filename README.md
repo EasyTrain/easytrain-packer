@@ -27,3 +27,16 @@ AWS Account
 AWS CLI 1.15.58  
 A valid AWS Access Key ID and Secret Access Key configured with the AWS CLI  
 An Ubuntu base AMI for your specific region
+
+## Files
+
+```
+├── aws-ubuntu.pkr.hcl
+├── easytrain.service
+├── images
+│   └── easytrain-packer.png
+├── insert-stations.sh
+├── pg_hba.conf
+├── postgres-setup.sh
+└── README.md
+```
